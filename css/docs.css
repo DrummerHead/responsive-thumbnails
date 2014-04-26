@@ -1,0 +1,33 @@
+/*
+ * Responsive Thumbnails Documentation
+ *
+ * This stylesheet is not needed for
+ * Responsive Thumbnails to work
+ *
+ */
+
+
+html {
+  font-family: sans-serif;
+  color: #333;
+  background-color: #f7f7f7;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+header {
+}
+main {
+}
+.vessel {
+  position: relative;
+  max-width: 83.4em;
+  padding: .1em 1.5em;
+  margin: 0 auto;
+}
+#responsive-thumbs-0 li {
+  padding-top: .55em;
+  padding-bottom: .55em;
+}
