@@ -11,6 +11,7 @@ html {
   font-family: sans-serif;
   color: #333;
   background-color: #f7f7f7;
+  overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -67,4 +68,25 @@ main {
 }
 .separate-right {
   border-right: 1px solid #ccc;
+}
+
+@media (max-width: 627px){
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4 {
+    width: auto;
+    float: none;
+    clear: both;
+    border-top: 1.5px solid #ccc;
+  }
+  .col-1:first-child,
+  .col-2:first-child,
+  .col-3:first-child,
+  .col-4:first-child {
+    border-top: none;
+  }
+  .separate-right {
+    border-right: none;
+  }
 }
