@@ -55,7 +55,7 @@ if(rt.length > 0){
     // Get data from data attributes
     //
     var maxWidth = parseInt(element.getAttribute('data-max-width'), 10);
-    var padding = parseInt(element.getAttribute('data-padding-sides'), 10);
+    var padding = parseInt(element.getAttribute('data-padding'), 10);
 
 
     // Create and inject stylesheet with specific padding for lis and
@@ -67,8 +67,7 @@ if(rt.length > 0){
       '  margin-right: -' + padding + 'px;' +
       '}' +
       '#responsive-thumbs-' + index + ' li {' +
-      '  padding-left: ' + padding + 'px;' +
-      '  padding-right: ' + padding + 'px;' +
+      '  padding: ' + padding + 'px;' +
       '}';
 
     document.head.insertAdjacentHTML(
