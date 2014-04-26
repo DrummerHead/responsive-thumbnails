@@ -27,7 +27,41 @@ main {
   padding: .1em 1.5em;
   margin: 0 auto;
 }
-#responsive-thumbs-0 li {
-  padding-top: .55em;
-  padding-bottom: .55em;
+
+.row {
+  margin: 0 -0.5em;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
+.row:before,
+.row:after {
+  content: '';
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.col-1,
+.col-2,
+.col-3,
+.col-4 {
+  float: left;
+  padding: 0 0.5em;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.col-1 {
+  width: 25%;
+}
+.col-2 {
+  width: 50%;
+}
+.col-3 {
+  width: 75%;
+}
+.col-4 {
+  width: 100%;
+}
+
