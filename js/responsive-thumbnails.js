@@ -36,14 +36,14 @@ var resizeFuncSweatshop = function(index, maxWidth, padding){
   var style = document.getElementById('dynamic-rt-' + index);
   var container = document.getElementById('responsive-thumbs-' + index);
   var elemUnitWidth = maxWidth + (padding * 2);
+  var fitInsideMaxPast = 0;
 
   return function(){
-    this.fitInsideMaxMemoize = this.fitInsideMaxMemoize || 0;
     var fitInsideMax = Math.ceil(container.clientWidth / elemUnitWidth);
 
-    if(fitInsideMax !== this.fitInsideMaxMemoize){
+    if(fitInsideMax !== fitInsideMaxPast){
       style.sheet.cssRules[1].style.width = (100 / fitInsideMax) + '%';
-      this.fitInsideMaxMemoize = fitInsideMax;
+      fitInsideMaxPast = fitInsideMax;
     }
   }
 }
