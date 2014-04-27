@@ -50,7 +50,7 @@
  * You can remove this if you want. What's important is for
  * the child elements of li to be fluid.
  */
-.responsive-thumbs li > * {
+.responsive-thumbs li * {
   max-width: 100%;
 }
 .responsive-thumbs li img {

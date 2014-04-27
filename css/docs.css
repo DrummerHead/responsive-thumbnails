@@ -70,6 +70,17 @@ main {
   border-right: 1px solid #ccc;
 }
 
+.metadata {
+}
+.fn {
+}
+.title {
+}
+
+
+
+
+
 @media (max-width: 627px){
   .col-1,
   .col-2,
