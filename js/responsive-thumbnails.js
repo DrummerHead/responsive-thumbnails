@@ -37,26 +37,24 @@ var resizeFuncs = [];
 // container and try to be as close in width to data-max-width as possible
 //
 var resizeFuncSweatshop = function(index, maxWidth, padding, maxHeight){
+  if(typeof maxWidth === "undefined" || maxWidth === null || isNaN(maxWidth)){
+    throw new Error("`data-max-width` attribute must be set in `.responsive-thumbs` element");
+  }
+  padding = padding || 0;
   var style = document.getElementById('dynamic-rt-' + index);
   var container = document.getElementById('responsive-thumbs-' + index);
   var elemUnitWidth = maxWidth + (padding * 2);
   var fitInsideMaxPast = 0;
 
-  // In the case that data-max-height is set on the element, we take the burden
-  // and calculations needed to keep the same aspect ratio and content size.
-  // The height on lis is calculated in pixels and set, and the font-size of
-  // the ul is calculated in such a way to preserve the text in the same
-  // position.
+  // When dealing with only image (or mainly image content (img inside a for
+  // example)) the ratio of the whole package is set by the image itself (by
+  // only assigning width and leaving height to be calculated automatically) In
+  // such cases we don't need to calculate heights or ems (no text expected
+  // inside) so we can leave that work to the client (rendering engine)
   //
-  if(typeof maxHeight !== "undefined" && maxHeight !== null){
+  if(typeof maxHeight === "undefined" || maxHeight === null || isNaN(maxHeight)){
     return function(){
-      var containerClientWidth = container.clientWidth;
-      var fitInsideMax = Math.ceil(containerClientWidth / elemUnitWidth);
-      var calculatedLiWidth = (containerClientWidth - (padding * fitInsideMax * 2)) / fitInsideMax;
-      var liHeight = calculatedLiWidth / (maxWidth / maxHeight);
-
-      style.sheet.cssRules[1].style.height = liHeight + (padding * 2) + 'px';
-      style.sheet.cssRules[0].style.fontSize = calculatedLiWidth / maxWidth + 'em';
+      var fitInsideMax = Math.ceil(container.clientWidth / elemUnitWidth);
 
       if(fitInsideMax !== fitInsideMaxPast){
         style.sheet.cssRules[1].style.width = (100 / fitInsideMax) + '%';
@@ -65,15 +63,21 @@ var resizeFuncSweatshop = function(index, maxWidth, padding, maxHeight){
     };
   }
 
-  // When dealing with only image (or mainly image content (img inside a for
-  // example)) the ratio of the whole package is set by the image itself (by
-  // only assigning width and leaving height to be calculated automatically) In
-  // such cases we don't need to calculate heights or ems (no text expected
-  // inside) so we can leave that work to the client (rendering engine)
+  // In the case that data-max-height is set on the element, we take the burden
+  // and calculations needed to keep the same aspect ratio and content size.
+  // The height on lis is calculated in pixels and set, and the font-size of
+  // the ul is calculated in such a way to preserve the text in the same
+  // position.
   //
   else {
     return function(){
-      var fitInsideMax = Math.ceil(container.clientWidth / elemUnitWidth);
+      var containerClientWidth = container.clientWidth;
+      var fitInsideMax = Math.ceil(containerClientWidth / elemUnitWidth);
+      var calculatedLiWidth = (containerClientWidth - (padding * fitInsideMax * 2)) / fitInsideMax;
+      var liHeight = calculatedLiWidth / (maxWidth / maxHeight);
+
+      style.sheet.cssRules[1].style.height = liHeight + (padding * 2) + 'px';
+      style.sheet.cssRules[0].style.fontSize = calculatedLiWidth / maxWidth + 'em';
 
       if(fitInsideMax !== fitInsideMaxPast){
         style.sheet.cssRules[1].style.width = (100 / fitInsideMax) + '%';
