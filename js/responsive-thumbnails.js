@@ -21,11 +21,9 @@ var $ = function(selector){
 var to_i = function(string){
   return parseInt(string, 10);
 };
-
-
-// Get all elements with .responsive-thumbs class
-//
-var rt = $('.responsive-thumbs');
+var guidGen = function(){
+  return Math.random().toString(36).substr(2, 9);
+};
 
 
 // var for holding all resizing functions
@@ -87,67 +85,85 @@ var resizeFuncSweatshop = function(index, maxWidth, padding, maxHeight){
   }
 };
 
-if(rt.length > 0){
-  rt.forEach(function(element, index){
+var responsiveThumbnails = function(selector, maxWidth, padding, maxHeight){
+  var rt = $(selector);
+
+  if(rt.length > 0){
+    rt.forEach(function(element){
+
+      // Create unique id
+      //
+      var guid = guidGen();
+
+      // Get data from function atributes or get data attributes from element
+      // Save as var because this can change per element if set by data-attr
+      //
+      var _maxWidth = to_i(maxWidth || element.getAttribute('data-max-width'));
+      var _padding = to_i(padding || element.getAttribute('data-padding'));
+      var _maxHeight = to_i(maxHeight || element.getAttribute('data-max-height'));
 
 
-    // Get data from data attributes
-    //
-    var maxWidth = to_i(element.getAttribute('data-max-width'));
-    var padding = to_i(element.getAttribute('data-padding'));
-    var maxHeight = to_i(element.getAttribute('data-max-height'));
+      // Create and inject stylesheet with specific padding for lis and
+      // negative margins for container
+      //
+      var stylesheetContent =
+        '#responsive-thumbs-' + guid + ' {' +
+        '  margin-left: -' + _padding + 'px;' +
+        '  margin-right: -' + _padding + 'px;' +
+        '}' +
+        '#responsive-thumbs-' + guid + ' li {' +
+        '  padding: ' + _padding + 'px;' +
+        '}';
+
+      document.head.insertAdjacentHTML(
+        'beforeend',
+        '<style id="dynamic-rt-' + guid + '">' + stylesheetContent + '</style>'
+      );
 
 
-    // Create and inject stylesheet with specific padding for lis and
-    // negative margins for container
-    //
-    var stylesheetContent =
-      '#responsive-thumbs-' + index + ' {' +
-      '  margin-left: -' + padding + 'px;' +
-      '  margin-right: -' + padding + 'px;' +
-      '}' +
-      '#responsive-thumbs-' + index + ' li {' +
-      '  padding: ' + padding + 'px;' +
-      '}';
-
-    document.head.insertAdjacentHTML(
-      'beforeend',
-      '<style id="dynamic-rt-' + index + '">' + stylesheetContent + '</style>'
-    );
+      // Set specific id for the specific .responsive-thumbs
+      //
+      element.id = 'responsive-thumbs-' + guid;
 
 
-    // Set specific id for the specific .responsive-thumbs
-    //
-    element.id = 'responsive-thumbs-' + index;
-
-
-    // Save a specific resizeFunc in resizeFuncs and
-    // execute it for the first time
-    //
-    resizeFuncs[index] = resizeFuncSweatshop(index, maxWidth, padding, maxHeight);
-    resizeFuncs[index]();
-  });
-
-
-  // Create specific function instead of anonymos function so it can be
-  // unbinded from resize
-  //
-  var responsiveThumbnails = function(){
-    resizeFuncs.forEach(function(func){
-      func();
+      // Save a specific resizeFunc in resizeFuncs and
+      // execute it for the first time
+      //
+      resizeFuncs.push(resizeFuncSweatshop(guid, _maxWidth, _padding, _maxHeight));
+      resizeFuncs[resizeFuncs.length - 1]();
     });
-  };
 
 
-  // Bind resize window event to responsiveThumbnails.
-  // A better solution would be to listen to the specific
-  // element's resize event, but this doesn not exist natively.
-  //
-  // Side projects for emulating this have been created:
-  // https://github.com/search?q=element+querie
-  //
-  window.addEventListener('resize', responsiveThumbnails, false);
-}
+    // Create specific function instead of anonymos function so it can be
+    // unbinded from resize
+    //
+    var responsiveThumbnailsFuncs = function(){
+      resizeFuncs.forEach(function(func){
+        func();
+      });
+    };
+
+
+    // Bind resize window event to responsiveThumbnails.
+    // A better solution would be to listen to the specific
+    // element's resize event, but this doesn not exist natively.
+    //
+    // Side projects for emulating this have been created:
+    // https://github.com/search?q=element+querie
+    //
+    window.addEventListener('resize', responsiveThumbnailsFuncs, false);
+  }
+};
+
+
+// Make responsiveThumbnails a global function
+//
+window.responsiveThumbnails = responsiveThumbnails;
+
+
+// Initialize
+//
+responsiveThumbnails('.responsive-thumbs');
 
 
 
