@@ -36,11 +36,11 @@ var resizeFuncs = [];
 //
 var resizeFuncSweatshop = function(index, maxWidth, padding, maxHeight){
   if(typeof maxWidth === "undefined" || maxWidth === null || isNaN(maxWidth)){
-    throw new Error("`data-max-width` attribute must be set in `.responsive-thumbs` element");
+    throw new Error("`data-max-width` attribute must be set in `.responsive-thumbnails` element");
   }
   padding = padding || 0;
   var style = document.getElementById('dynamic-rt-' + index);
-  var container = document.getElementById('responsive-thumbs-' + index);
+  var container = document.getElementById('responsive-thumbnails-' + index);
   var elemUnitWidth = maxWidth + (padding * 2);
   var fitInsideMaxPast = 0;
 
@@ -107,11 +107,11 @@ var responsiveThumbnails = function(selector, maxWidth, padding, maxHeight){
       // negative margins for container
       //
       var stylesheetContent =
-        '#responsive-thumbs-' + guid + ' {' +
+        '#responsive-thumbnails-' + guid + ' {' +
         '  margin-left: -' + _padding + 'px;' +
         '  margin-right: -' + _padding + 'px;' +
         '}' +
-        '#responsive-thumbs-' + guid + ' li {' +
+        '#responsive-thumbnails-' + guid + ' li {' +
         '  padding: ' + _padding + 'px;' +
         '}';
 
@@ -121,9 +121,9 @@ var responsiveThumbnails = function(selector, maxWidth, padding, maxHeight){
       );
 
 
-      // Set specific id for the specific .responsive-thumbs
+      // Set specific id for the specific .responsive-thumbnails
       //
-      element.id = 'responsive-thumbs-' + guid;
+      element.id = 'responsive-thumbnails-' + guid;
 
 
       // Save a specific resizeFunc in resizeFuncs and
@@ -163,7 +163,7 @@ window.responsiveThumbnails = responsiveThumbnails;
 
 // Initialize
 //
-responsiveThumbnails('.responsive-thumbs');
+responsiveThumbnails('.responsive-thumbnails');
 
 
 
