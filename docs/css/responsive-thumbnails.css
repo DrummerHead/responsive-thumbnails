@@ -1,0 +1,61 @@
+/*
+ * Responsive Thumbnails by DrummerHead
+ * http://mcdlr.com/responsive-thumbnails/
+ *
+ * Released under the MIT license
+ * If you like this, find me and buy me a beer
+ *
+ */
+
+
+.responsive-thumbnails:before,
+.responsive-thumbnails:after {
+  content: '';
+  display: table;
+}
+.responsive-thumbnails:after {
+  clear: both;
+}
+
+.responsive-thumbnails,
+.responsive-thumbnails * {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+ * Set this class to a `ul` or `ol` element
+ */
+.responsive-thumbnails {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  border: none;
+}
+
+/*
+ * Use `li` as a container only, if you set borders or margins to it
+ * the calculation will not account for it and will be wrong.
+ *
+ * If you want to have borders, set them to a child element to the li
+ */
+.responsive-thumbnails li {
+  float: left;
+  margin: 0;
+  border: none;
+}
+
+/*
+ * You can remove this if you want. What's important is for
+ * the child elements of li to be fluid.
+ */
+.responsive-thumbnails li * {
+  max-width: 100%;
+}
+.responsive-thumbnails li img {
+  display: block;
+  width: auto;
+}
+
+
