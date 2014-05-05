@@ -28,12 +28,6 @@ section {
   padding: 1em 0 2em;
   border-top: 5px solid #e7e7e7;
 }
-.vessel {
-  position: relative;
-  max-width: 83.45em;
-  padding: .1em 1.5em;
-  margin: 0 auto;
-}
 h1 {
   font-size: 3.2em;
   margin: 1em 0;
@@ -49,6 +43,30 @@ h3 {
 h4 {
 }
 h5 {
+}
+code {
+  display: inline;
+  padding: .25em .3em;
+  border: 1px solid #ddd;
+  border-radius: .3em;
+  vertical-align: baseline;
+  font-family: monospace;
+  background-color: #fff;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  display: block;
+  padding: 1em 1.5em;
+  overflow: auto;
+}
+
+.vessel {
+  position: relative;
+  max-width: 83.45em;
+  padding: .1em 1.5em;
+  margin: 0 auto;
 }
 
 .row {
