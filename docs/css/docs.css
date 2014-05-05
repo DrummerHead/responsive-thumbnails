@@ -24,11 +24,31 @@ header {
 }
 main {
 }
+section {
+  padding: 1em 0 2em;
+  border-top: 5px solid #e7e7e7;
+}
 .vessel {
   position: relative;
-  max-width: 83.4em;
+  max-width: 83.45em;
   padding: .1em 1.5em;
   margin: 0 auto;
+}
+h1 {
+  font-size: 3.2em;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 2.5em;
+  margin: .5em 0;
+}
+h3 {
+  font-size: 1.5em;
+  margin: 1.5em 0 0.25em;
+}
+h4 {
+}
+h5 {
 }
 
 .row {
@@ -86,6 +106,44 @@ main {
 .title {
 }
 
+.regular-thumbnails:before,
+.regular-thumbnails:after {
+  content: '';
+  display: table;
+}
+.regular-thumbnails:after {
+  clear: both;
+}
+
+.regular-thumbnails,
+.regular-thumbnails * {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.regular-thumbnails {
+  display: block;
+  margin: 0 -8px;
+  list-style-type: none;
+  padding: 0;
+  border: none;
+}
+
+.regular-thumbnails li {
+  float: left;
+  padding: 8px;
+  margin: 0;
+  border: none;
+}
+
+.regular-thumbnails li * {
+  max-width: 100%;
+}
+.regular-thumbnails li img {
+  display: block;
+  width: auto;
+}
 
 
 
