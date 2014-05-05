@@ -5,10 +5,19 @@
 <meta charset='utf-8'>
 <meta name='author' content='DrummerHead'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='http://mcdlr.com/css/promiscuous.css'>
 <link rel='stylesheet' href='css/docs.css'>
 <link rel='stylesheet' href='css/responsive-thumbnails.css'>
 </head>
 <body>
+<header id='quoin'>
+  <div id='brand' class='small'>
+    <a href='http://mcdlr.com/' title='Go to mcdlr homepage'>Go to mcdlr homepage</a>
+  </div>
+  <div id='octo-peek'>
+    <a href='https://github.com/DrummerHead/responsive-thumbnails' rel='external'><span>Fork me on Github!</span></a>
+  </div>
+</header>
 
 
 
@@ -133,7 +142,7 @@
       <p>Also, the images should be the same size. If you want to show a list of varying image sizes, perhaps you'll be interested in <a href='http://masonry.desandro.com/'>Masonry</a></p>
       <ol>
         <li>
-          <p><a href=''>Add these files</a> to your project.</p>
+          <p><a href='https://github.com/DrummerHead/responsive-thumbnails/tree/master/src/'>Add these files</a> to your project.</p>
         </li>
         <li>
           <p>Add the <code>.responsive-thumbnails</code> class to any <code>ul</code> or <code>ol</code> that is holding your thumbnails.</p>
@@ -377,7 +386,7 @@
       <p>When your items are beyond an image, the calculation of the item's height has to be explicit. For this we add a fourth parameter expliciting the item's height.</p>
       <ol>
         <li>
-          <p><a href=''>Add these files</a> to your project.</p>
+          <p><a href='https://github.com/DrummerHead/responsive-thumbnails/tree/master/src/'>Add these files</a> to your project.</p>
         </li>
         <li>
           <p>Add the <code>.responsive-thumbnails</code> class to any <code>ul</code> or <code>ol</code> that is holding your thumbnails.</p>
@@ -640,7 +649,7 @@ responsiveThumbnails('.responsive-thumbnails', '180px', '10px', '242px');
       <p>For each element that has the <code>.responsive-thumbnails</code> class (or whatever we've chosen to initialize directly via Js), we create a stylesheet for it on the header. On resize we get the container's width and calculate how many images would fit in that container + 1. We divide 100 by that number and then that's the width of each li in percentage.</p>
       <p>We don't set inline styles on each li, we instead modify the stylesheet's attributes related to li; and ONLY when the numbers tell us that a different percentage is needed (this is a Good Thing&#8482;).</p>
       <p>If we also set the height of the item, then we have to calculate the height of the li and change the stylesheet attribute for that. This is more resource intensive since there are more calculations and a change on the stylesheet every time we resize.</p>
-      <p>If you want to understand this in depth, <a href=''>check the code</a>! It's heavily commented.</p>
+      <p>If you want to understand this in depth, <a href='https://github.com/DrummerHead/responsive-thumbnails/tree/master/src/responsive-thumbnails.js'>check the code</a>! It's heavily commented.</p>
     </div>
   </section>
 </main>
@@ -650,6 +659,14 @@ responsiveThumbnails('.responsive-thumbnails', '180px', '10px', '242px');
 
 <div id='scripts'>
   <script src='js/responsive-thumbnails.js'></script>
+
+  <script>// Google Analytics
+  var _gaq=[['_setAccount','UA-1030009-5'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
 </div>
+
 </body>
 </html>
